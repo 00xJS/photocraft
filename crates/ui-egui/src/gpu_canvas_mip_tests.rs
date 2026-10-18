@@ -109,6 +109,7 @@ fn check_mips(gpu: &GpuCanvas) {
 /// both depths and compares every level with a full rebuild of the same pixels.
 #[test]
 fn partial_updates_match_a_full_rebuild_at_every_mip_level() {
+    let _gpu = photocraft_testkit::gpu_lock();
     let rs = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| egui_kittest::wgpu::create_render_state(wgpu_setup(), Default::default())));
     let Ok(rs) = rs else {
         eprintln!("skipping mip rebuild comparison: no GPU adapter");
